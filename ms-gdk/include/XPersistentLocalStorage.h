@@ -7,6 +7,7 @@
 #pragma once
 
 #include <XAsync.h>
+#include <XPackage.h>
 
 extern "C"
 {
@@ -48,5 +49,10 @@ STDAPI XPersistentLocalStoragePromptUserForSpaceAsync(
 
 STDAPI XPersistentLocalStoragePromptUserForSpaceResult(
     _Inout_ XAsyncBlock* asyncBlock
+    ) noexcept;
+
+STDAPI XPersistentLocalStorageMountForPackage(
+    _In_z_ const char* packageIdentifier,
+    _Out_ XPackageMountHandle* mountHandle
     ) noexcept;
 }

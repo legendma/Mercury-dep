@@ -14,6 +14,7 @@ Abstract:
 
 #pragma once
 
+
 /*++
 
  MessageId's 0x0000 - 0x00ff (inclusive) are reserved for DStorage.
@@ -50,6 +51,7 @@ Abstract:
 //
 #define FACILITY_GAME                    2340
 #define FACILITY_AUTHMAN                 2013
+#define FACILITY_XBOXLIVE                21
 
 
 //
@@ -160,6 +162,56 @@ Abstract:
 //
 #define E_GAMERUNTIME_MISSING_DEPENDENCY ((HRESULT)0x89240107L)
 
+// 0x89240108
+//
+// MessageId: E_GAMERUNTIME_SUSPEND_ACTIVEOBJECTS
+//
+// MessageText:
+//
+// The game runtime has active objects at suspend.
+//
+#define E_GAMERUNTIME_SUSPEND_ACTIVEOBJECTS ((HRESULT)0x89240108L)
+
+// 0x89240109
+//
+// MessageId: E_GAMERUNTIME_OPTIONS_MISMATCH
+//
+// MessageText:
+//
+// The runtime has already been initialized with a different set of options.
+//
+#define E_GAMERUNTIME_OPTIONS_MISMATCH   ((HRESULT)0x89240109L)
+
+// 0x8924010A
+//
+// MessageId: E_GAMERUNTIME_OPTIONS_NOT_SUPPORTED
+//
+// MessageText:
+//
+// Custom initialization options cannot be used with packaged builds.
+//
+#define E_GAMERUNTIME_OPTIONS_NOT_SUPPORTED ((HRESULT)0x8924010AL)
+
+// 0x8924010B
+//
+// MessageId: E_GAMERUNTIME_GAMECONFIG_BAD_FORMAT
+//
+// MessageText:
+//
+// There was as problem parsing the game config.
+//
+#define E_GAMERUNTIME_GAMECONFIG_BAD_FORMAT ((HRESULT)0x8924010BL)
+
+// 0x8924010C
+//
+// MessageId: E_GAMERUNTIME_INVALID_HANDLE
+//
+// MessageText:
+//
+// This handle value is no longer valid.
+//
+#define E_GAMERUNTIME_INVALID_HANDLE     ((HRESULT)0x8924010CL)
+
 /*++
 
  MessageId's 0x5100 - 0x51ff (inclusive) are reserved for GAMEUSER.
@@ -174,6 +226,16 @@ Abstract:
 // The Authentication service can't identify the user.
 //
 #define E_GAMEUSER_NO_AUTH_USER          ((HRESULT)0x87DD0013L)
+
+// 0x8015DC12
+//
+// MessageId: E_GAMEUSER_USER_NOT_IN_SANDBOX
+//
+// MessageText:
+//
+// Either the title is not allowed in the current sandbox, or a user authorized for the current sandbox has not been signed in.
+//
+#define E_GAMEUSER_USER_NOT_IN_SANDBOX   ((HRESULT)0x8015DC12L)
 
 // 0x89245100
 //
@@ -583,6 +645,16 @@ Abstract:
 //
 #define E_GAMESTORE_ALREADY_PURCHASED    ((HRESULT)0x89245304L)
 
+// 0x89245305
+//
+// MessageId: E_GAMESTORE_LICENSE_ACTION_THROTTLED
+//
+// MessageText:
+//
+// The game has excessively requested a license for a product and is now being throttled.
+//
+#define E_GAMESTORE_LICENSE_ACTION_THROTTLED ((HRESULT)0x89245305L)
+
 /*++
 
  MessageIds 0x5400 - 0x54ff (inclusive) are reserved for XGameStreaming.
@@ -707,4 +779,5 @@ Abstract:
 // The resolution is invalid.
 //
 #define E_GAMESTREAMING_INVALID_CUSTOM_RESOLUTION ((HRESULT)0x8924540BL)
+
 

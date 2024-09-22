@@ -43,7 +43,8 @@ enum class XPackageKind : uint32_t
 enum class XPackageEnumerationScope : uint32_t
 {
     ThisOnly,
-    ThisAndRelated
+    ThisAndRelated,
+    ThisPublisher
 };
 
 struct XPackageChunkSelector
@@ -80,6 +81,7 @@ struct XPackageDetails
     uint32_t index;
     uint32_t count;
     bool ageRestricted;
+    _Field_z_ const char* titleId;
 };
 
 struct XPackageFeature

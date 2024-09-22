@@ -8,7 +8,7 @@
 
 #include <XGameRuntimeTypes.h>
 
-extern "C" 
+extern "C"
 {
 
 struct XSystemAnalyticsInfo
@@ -115,6 +115,11 @@ struct XSystemRuntimeInfo
 };
 
 STDAPI_(XSystemRuntimeInfo) XSystemGetRuntimeInfo() noexcept;
+
+
+STDAPI_(void) XSystemAllowFullDownloadBandwidth(
+    _In_ bool enable
+    ) noexcept;
 
 
 }

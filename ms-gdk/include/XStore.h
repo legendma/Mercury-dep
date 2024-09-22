@@ -516,6 +516,24 @@ STDAPI XStoreQueryGameAndDlcPackageUpdatesResult(
     _Out_writes_(count) XStorePackageUpdate* packageUpdates
     ) noexcept;
 
+STDAPI XStoreQueryPackageUpdatesAsync(
+    _In_ const XStoreContextHandle storeContextHandle,
+    _In_ const char** packageIdentifiers,
+    _In_ size_t packageIdentifiersCount,
+    _Inout_ XAsyncBlock* async
+    ) noexcept;
+
+STDAPI XStoreQueryPackageUpdatesResultCount(   
+    _In_ XAsyncBlock* async,
+    _Out_ uint32_t* count
+    ) noexcept;
+
+STDAPI XStoreQueryPackageUpdatesResult(   
+    _Inout_ XAsyncBlock* async,
+    _In_ uint32_t count,
+    _Out_writes_(count) XStorePackageUpdate* packageUpdates 
+    ) noexcept;
+
 STDAPI XStoreDownloadPackageUpdatesAsync(
     _In_ const XStoreContextHandle storeContextHandle,
     _In_z_count_(packageIdentifiersCount) const char** packageIdentifiers,
@@ -603,5 +621,18 @@ STDAPI XStoreAcquireLicenseForDurablesAsync(
 STDAPI XStoreAcquireLicenseForDurablesResult(
     _Inout_ XAsyncBlock* async,
     _Out_ XStoreLicenseHandle* storeLicenseHandle
+    ) noexcept;
+
+STDAPI XStoreQueryAssociatedProductsForStoreIdAsync(
+    _In_ const XStoreContextHandle storeContextHandle,
+    _In_z_ const char* storeProductId,
+    _In_ XStoreProductKind productKinds,
+    _In_ uint32_t maxItemsToRetrievePerPage,
+    _Inout_ XAsyncBlock* async
+    ) noexcept;
+
+STDAPI XStoreQueryAssociatedProductsForStoreIdResult(
+    _Inout_ XAsyncBlock* async,
+    _Out_ XStoreProductQueryHandle* productQueryHandle
     ) noexcept;
 }

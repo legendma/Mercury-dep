@@ -129,6 +129,7 @@ extern "C"
         uint32_t width;
         uint32_t height;
         XAppCaptureVideoEncoding encoding;
+        uint32_t startTimePreciseOffsetHns;
     };
 
     STDAPI XAppCaptureTakeDiagnosticScreenshot(
@@ -201,14 +202,32 @@ extern "C"
         _In_ XAppCaptureLocalStreamHandle handle
     ) noexcept;
 
+    struct XAppCaptureUserRecordingResult
+    {
+        size_t fileSizeInBytes;
+        SYSTEMTIME clipStartTimestamp;
+        uint64_t durationInMilliseconds;
+        uint32_t width;
+        uint32_t height;
+        XAppCaptureVideoEncoding encoding;
+        XAppCaptureVideoColorFormat colorFormat;
+    };
+
+    STDAPI XAppCaptureStartUserRecord(
+        _In_ XUserHandle requestingUser,
+        _In_ uint32_t localIdBufferLength,
+        _Out_writes_z_(localIdBufferLength) char* localIdBuffer
+    ) noexcept;
+
+    STDAPI XAppCaptureStopUserRecord(
+        _In_ const char* localId,
+        _Out_ XAppCaptureUserRecordingResult* result
+    ) noexcept;
+
 
     // Screenshot APIs
 
-    struct XAppCaptureScreenshotStream
-    {
-    };
-
-    typedef XAppCaptureScreenshotStream* XAppCaptureScreenshotStreamHandle;
+    typedef struct XAppCaptureScreenshotStream* XAppCaptureScreenshotStreamHandle;
 
     struct XAppCaptureTakeScreenshotResult
     {
@@ -236,6 +255,8 @@ extern "C"
         _Out_ uint32_t* bytesWritten) noexcept;
 
     STDAPI XAppCaptureCloseScreenshotStream(_In_ XAppCaptureScreenshotStreamHandle handle) noexcept;
+
+    // Settings APIs
 
     STDAPI XAppCaptureEnableRecord() noexcept; // enable recording and screenshots for user
     STDAPI XAppCaptureDisableRecord() noexcept; // disable recording and screenshots for user
